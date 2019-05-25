@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".NewBookActivity">
+
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Biblioteca"
+            android:textAllCaps="true"
+            android:textSize="30sp"
+            android:gravity="center"
+            android:layout_marginTop="70sp"
+            android:textColor="@color/colorTitle"/>
+    <EditText
+            android:hint="Nombre del libro"
+            android:layout_marginTop="10dp"
+            android:id="@+id/et_Bookname"
+            android:layout_width="355dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"/>
+    <EditText
+        android:hint="Id del autor"
+        android:layout_marginTop="10dp"
+        android:id="@+id/et_idAuthorBook"
+        android:layout_width="355dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"/>
+    <EditText
+        android:hint="ISBN"
+        android:layout_marginTop="10dp"
+        android:id="@+id/et_ISBN"
+        android:layout_width="355dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"/>
+    <EditText
+        android:hint="Caratula (int)"
+        android:layout_marginTop="10dp"
+        android:id="@+id/et_Cover"
+        android:layout_width="355dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"/>
+
+    <EditText
+        android:hint="Resumen"
+        android:layout_marginTop="10dp"
+        android:id="@+id/et_Summary"
+        android:layout_width="355dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"/>
+
+    <Button
+            android:layout_marginTop="40sp"
+            android:id="@+id/btn_agregar"
+            android:text="Agregar"
+            android:layout_width="255dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@color/btn_add"/>
+
+</LinearLayout>
