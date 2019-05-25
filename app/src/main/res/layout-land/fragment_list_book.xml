@@ -15,7 +15,6 @@
         android:textAllCaps="true"
         android:textSize="30sp"
         android:gravity="center"
-        android:layout_marginTop="30sp"
         android:layout_marginBottom="30sp"
         android:textColor="@color/colorTitle"/>
     <RelativeLayout

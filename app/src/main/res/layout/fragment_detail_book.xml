@@ -6,33 +6,215 @@
     android:layout_height="match_parent"
     tools:context=".DetailBookFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:id="@+id/tv_NombreLibro"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="asd"
-         />
-    <TextView
-        android:id="@+id/tv_IdAuthor"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="asdq12|12||2|12"
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+        <ImageView
+                android:id="@+id/image_main_content_fragment"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:src="@drawable/detailimage"
         />
-    <TextView
-        android:id="@+id/tv_ISBN"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        />
-    <TextView
-        android:id="@+id/tv_Caratula"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        />
-    <TextView
-        android:id="@+id/tv_Resumen"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        />
+
+
+    </RelativeLayout>
+
+    <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:layout_marginTop="8dp">
+
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+            >
+
+                <TextView
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="8dp"
+                        android:paddingRight="8dp"
+                        android:layout_marginBottom="4dp"
+
+                        android:text="Nombre: "
+                        android:textSize="@dimen/font_details_size"
+                        android:textStyle="bold"
+                />
+
+                <TextView
+                        android:id="@+id/tv_NombreLibro"
+
+                        android:layout_width="0dp"
+                        android:layout_weight="3"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="8dp"
+                        android:paddingRight="8dp"
+                        android:layout_marginBottom="4dp"
+
+                        android:text="Nombre"
+                        android:textSize="@dimen/font_details_size"
+                />
+
+            </LinearLayout>
+
+            <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+            >
+
+                <TextView
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="8dp"
+                        android:paddingRight="8dp"
+                        android:layout_marginBottom="4dp"
+
+                        android:text="ID Autor"
+                        android:textSize="@dimen/font_details_size"
+                        android:textStyle="bold"
+                />
+
+                <TextView
+                        android:id="@+id/tv_IdAuthor"
+
+                        android:layout_width="0dp"
+                        android:layout_weight="3"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="8dp"
+                        android:paddingRight="8dp"
+                        android:layout_marginBottom="4dp"
+
+                        android:text="ID Autor: "
+                        android:textSize="@dimen/font_details_size"
+                />
+
+            </LinearLayout>
+
+            <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+            >
+
+                <TextView
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="8dp"
+                        android:paddingRight="8dp"
+                        android:layout_marginBottom="4dp"
+
+                        android:text="ISBN: "
+                        android:textSize="@dimen/font_details_size"
+                        android:textStyle="bold"
+                />
+
+                <TextView
+                        android:id="@+id/tv_ISBN"
+
+                        android:layout_width="0dp"
+                        android:layout_weight="3"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="8dp"
+                        android:paddingRight="8dp"
+                        android:layout_marginBottom="4dp"
+
+                        android:text="ISBN: "
+                        android:textSize="@dimen/font_details_size"
+                />
+
+            </LinearLayout>
+
+            <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+            >
+
+                <TextView
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="8dp"
+                        android:paddingRight="8dp"
+                        android:layout_marginBottom="4dp"
+
+                        android:text="Caratula: "
+                        android:textSize="@dimen/font_details_size"
+                        android:textStyle="bold"
+                />
+
+                <TextView
+                        android:id="@+id/tv_Caratula"
+
+                        android:layout_width="0dp"
+                        android:layout_weight="3"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="8dp"
+                        android:paddingRight="8dp"
+                        android:layout_marginBottom="4dp"
+
+                        android:text="Caratula: "
+                        android:textSize="@dimen/font_details_size"
+                />
+
+            </LinearLayout>
+
+            <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+            >
+
+                <TextView
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="8dp"
+                        android:paddingRight="8dp"
+                        android:layout_marginBottom="4dp"
+
+                        android:text="Resumen: "
+                        android:textSize="@dimen/font_details_size"
+                        android:textStyle="bold"
+                />
+
+                <TextView
+                        android:id="@+id/tv_Resumen"
+
+                        android:layout_width="0dp"
+                        android:layout_weight="3"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="8dp"
+                        android:paddingRight="8dp"
+                        android:layout_marginBottom="4dp"
+
+                        android:text="Resumen: "
+                        android:textSize="@dimen/font_details_size"
+                />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
 
 </LinearLayout>
