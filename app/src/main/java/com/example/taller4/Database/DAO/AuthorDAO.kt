@@ -15,5 +15,5 @@ interface AuthorDAO {
     suspend fun insert(author : Author)
 
     @Query("DELETE FROM Author")
-    fun deleteAllAuthor()
+    suspend fun deleteAllAuthor()
 }

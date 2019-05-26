@@ -3,6 +3,7 @@ package com.example.taller4.Database.DAO
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
+import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.example.taller4.Database.Entitys.Book
 
@@ -14,7 +15,7 @@ interface BookDAO {
     @Query("SELECT * FROM Book order by BookName ASC")
     fun getAllBooks() : LiveData<List<Book>>
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(book : Book)
 
     @Query("UPDATE Book SET Fav = NOT Fav where id_Book = :id")
@@ -22,4 +23,8 @@ interface BookDAO {
 
     @Query("SELECT * FROM Book where Fav = 1")
     fun getAllFavBooks() : LiveData<List<Book>>
+
+
+    @Query(" DELETE FROM Book")
+    suspend fun DeleteBooks()
 }

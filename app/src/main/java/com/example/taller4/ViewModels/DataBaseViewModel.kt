@@ -6,6 +6,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
 import com.example.taller4.Database.Entitys.Author
 import com.example.taller4.Database.Entitys.Book
+import com.example.taller4.Database.Entitys.BookXTag
 import com.example.taller4.Database.Entitys.Tag
 import com.example.taller4.Database.RoomDB.BookRoomDatabase
 import com.example.taller4.Repository.Repository
@@ -19,6 +20,7 @@ class DataBaseViewModel(application: Application) : AndroidViewModel(application
     val allBooks : LiveData<List<Book>>
     val allTags : LiveData<List<Tag>>
     val allFavBook : LiveData<List<Book>>
+    val allbookxtags : LiveData<List<BookXTag>>
 
 
 
@@ -27,27 +29,34 @@ class DataBaseViewModel(application: Application) : AndroidViewModel(application
         val bookDao = BookRoomDatabase.getDatabase(application, viewModelScope).bookDao()
         val authorDao = BookRoomDatabase.getDatabase(application, viewModelScope).authorDAO()
         val tagDao = BookRoomDatabase.getDatabase(application, viewModelScope).tagDAO()
-        repository = Repository(bookDao, tagDao, authorDao)
+        val bookxtagDao = BookRoomDatabase.getDatabase(application, viewModelScope).bookxtagdao()
+        repository = Repository(bookDao, tagDao, authorDao, bookxtagDao)
 
         allAuthors = repository.allAuthors
         allBooks = repository.allBooks
         allTags = repository.allTags
         allFavBook = repository.allFavBooks
+        allbookxtags = repository.allBookXTag
+
 
 
     }
+    //Get one
     fun getOneBook(name: String) = viewModelScope.launch (Dispatchers.IO){
         repository.getOneBook(name)
     }
+    //Updates
     fun updateBook(id: Int) = viewModelScope.launch ( Dispatchers.IO ){
         repository.updateBook(id)
 
     }
 
-    fun insertBook(book: Book) = viewModelScope.launch(Dispatchers.IO) {
-        repository.insert(book)
+    //Inserts
+        fun insertBook(book: Book) = viewModelScope.launch(Dispatchers.IO) {
+            repository.insert(book)
 
-    }
+        }
+
     fun insertAuthor(author: Author) = viewModelScope.launch(Dispatchers.IO) {
         repository.insert(author)
 
@@ -55,5 +64,17 @@ class DataBaseViewModel(application: Application) : AndroidViewModel(application
     fun insertTag(tag : Tag )= viewModelScope.launch( Dispatchers.IO ){
         repository.insert(tag)
 
+    }
+
+    //Deletes
+
+    fun deleteBooks() = viewModelScope.launch(Dispatchers.IO){
+        repository.deleteBooks()
+    }
+    fun deleteAuthors() = viewModelScope.launch(Dispatchers.IO){
+        repository.deleteAuthors()
+    }
+    fun deleteTags() = viewModelScope.launch(Dispatchers.IO){
+        repository.deleteTags()
     }
 }

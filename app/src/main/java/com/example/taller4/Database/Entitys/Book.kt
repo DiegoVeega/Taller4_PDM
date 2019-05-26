@@ -18,6 +18,9 @@ import androidx.room.PrimaryKey
 )
 
 class Book (
+    @PrimaryKey
+    @ColumnInfo(name="id_Book")
+    var id_Book: Int,
     @ColumnInfo(name= "BookName")
     val BookName: String,
     @ColumnInfo(name = "Id_AutorLibro")
@@ -29,8 +32,4 @@ class Book (
     @ColumnInfo(name = "Summary")
     val Summary: String,
     @ColumnInfo(name = "Fav")
-    val Fav: Boolean){
-
-    @PrimaryKey(autoGenerate = true)
-    var id_Book: Int = 0
-}
+    val Fav: Boolean)

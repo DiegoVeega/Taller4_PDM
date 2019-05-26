@@ -21,6 +21,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.taller4.Adapter.BookAdapter
 import com.example.taller4.Database.Entitys.Author
 import com.example.taller4.Database.Entitys.Book
+import com.example.taller4.Database.Entitys.Tag
 import com.example.taller4.Interface.IComunicaFragments
 import com.example.taller4.ViewModels.DataBaseViewModel
 import kotlinx.android.synthetic.main.recyclerview_item.view.*
@@ -89,11 +90,7 @@ class ListBookFragment : Fragment() {
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(context)
 
-        //Insertar autores
 
-        viewmodel.insertAuthor(Author("Mario","Espania"))
-        viewmodel.insertAuthor(Author("Ricardo","El salvador"))
-        viewmodel.insertAuthor(Author("Victor","Costa Rica"))
 
 
         //Agregar libro a favorito o eliminarlo
@@ -101,6 +98,7 @@ class ListBookFragment : Fragment() {
             books?.let { adapter?.setOnClickListenerBoton(object : View.OnClickListener{
                 override fun onClick(v: View) {
                     val id : String = v.tag.toString()
+
                     viewmodel.updateBook(id.toInt())
                 }
 
@@ -121,7 +119,7 @@ class ListBookFragment : Fragment() {
 
                         //Envia los datos del libro por interfaz
                          iCOmunica.enviarLibro(books.get(recyclerView.getChildAdapterPosition(v)).BookName,
-                             books.get(recyclerView.getChildAdapterPosition(v)).id_Book,
+                             books.get(recyclerView.getChildAdapterPosition(v)).Id_AutorLibro,
                              books.get(recyclerView.getChildAdapterPosition(v)).Isbn_libro,
                              books.get(recyclerView.getChildAdapterPosition(v)).Cover,
                              books.get(recyclerView.getChildAdapterPosition(v)).Summary)
@@ -132,12 +130,40 @@ class ListBookFragment : Fragment() {
 
         //Muestra los autores que han sido insertados
         viewmodel.allAuthors.observe(this, Observer { authors ->
-            Log.d("autors", "- - - - - - - - - - - - - -")
+            Log.d("Autores", "- - - - - - - - - - - - - -")
             for(repo in authors){
                 Log.d("Lista de repos", repo.AuthorName)
 
             }
         })
+        //Muestra los tags insertados
+        viewmodel.allTags.observe(this, Observer { tag ->
+            Log.d("Tags", "- - - - - - - - - - - - - -")
+            for(repo in tag){
+                Log.d("Lista de repos", repo.TagName)
+
+            }
+
+        })
+        //Muestra los libros insertados
+        viewmodel.allBooks.observe(this, Observer { books ->
+            Log.d("Libros", "- - - - - - - - - - - - - -")
+            for(repo in books){
+                Log.d("Lista de repos", repo.BookName)
+
+            }
+
+        })
+        //Muestra la relacion de libros y autores
+        viewmodel.allbookxtags.observe(this, Observer { books ->
+            Log.d("Libros relacionados a tags", "- - - - - - - - - - - - - -")
+            for(repo in books){
+                Log.d("Lista de repos", "id de la relacion: "+repo.IdLibroxTag.toString()+" | id del libro: "+repo.IDXLibro+" | id del tag : "+repo.IDXTag)
+
+            }
+
+        })
+
 
 
         //LLenar recyclerview

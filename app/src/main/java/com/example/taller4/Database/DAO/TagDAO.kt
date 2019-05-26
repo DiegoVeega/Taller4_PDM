@@ -13,4 +13,7 @@ interface TagDAO {
 
     @Insert
     suspend fun insert(tag : Tag)
+
+    @Query("DELETE FROM Tag")
+    suspend fun deleteTags()
 }

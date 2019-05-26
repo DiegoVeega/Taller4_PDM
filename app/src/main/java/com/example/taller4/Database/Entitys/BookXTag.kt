@@ -9,13 +9,13 @@ import androidx.room.PrimaryKey
 arrayOf(
     ForeignKey(
         entity = Book::class,
-        parentColumns = arrayOf("Id_Libro"),
+        parentColumns = arrayOf("id_Book"),
         childColumns = arrayOf("IDXLibro"),
         onDelete = ForeignKey.CASCADE
     ),
     ForeignKey(
         entity = Tag::class,
-        parentColumns = arrayOf("Id_Tag "),
+        parentColumns = arrayOf("Id_Tag"),
         childColumns = arrayOf("IDXTag"),
         onDelete = ForeignKey.CASCADE
     )
@@ -23,11 +23,13 @@ arrayOf(
 
     )
 class BookXTag (
-    @ColumnInfo(name =" IDXTag")
+    @PrimaryKey
+    @ColumnInfo(name="IdLibroxTag ")
+    var IdLibroxTag : Int,
+    @ColumnInfo(name ="IDXTag")
     val IDXTag : Int,
             @ColumnInfo(name = "IDXLibro")
             val IDXLibro:  Int
 ){
-    @PrimaryKey(autoGenerate = true)
-    var IdLibroxTag : Int  = 0
+
 }

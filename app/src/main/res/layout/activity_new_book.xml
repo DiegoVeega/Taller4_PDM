@@ -8,6 +8,7 @@
     android:orientation="vertical"
     tools:context=".NewBookActivity">
 
+
     <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -18,6 +19,15 @@
             android:layout_marginTop="70sp"
             android:textColor="@color/colorTitle"/>
     <EditText
+        android:inputType="number"
+        android:hint="Id Libro (Se reemplazara el libro si existe el ID)"
+        android:layout_marginTop="10dp"
+        android:id="@+id/et_idBook"
+        android:layout_width="355dp"
+        android:textSize="15dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"/>
+    <EditText
             android:hint="Nombre del libro"
             android:layout_marginTop="10dp"
             android:id="@+id/et_Bookname"
@@ -25,7 +35,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"/>
     <EditText
-        android:hint="Id del autor"
+        android:hint="Id del autor (Asegurese que exista el ID)"
+        android:inputType="number"
         android:layout_marginTop="10dp"
         android:id="@+id/et_idAuthorBook"
         android:layout_width="355dp"
