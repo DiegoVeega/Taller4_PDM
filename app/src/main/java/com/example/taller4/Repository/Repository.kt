@@ -14,6 +14,17 @@ class Repository(private val BookDao : BookDAO, private val TagDao : TagDAO, pri
     val allBooks: LiveData<List<Book>> = BookDao.getAllBooks()
     val allTags : LiveData<List<Tag>> = TagDao.getAllTags()
     val allAuthors : LiveData<List<Author>> = AuthorDao.getAllAuthor()
+    val allFavBooks : LiveData<List<Book>> = BookDao.getAllFavBooks()
+
+
+    @WorkerThread
+    suspend fun getOneBook(name : String){
+        BookDao.getOneBook(name)
+    }
+    @WorkerThread
+    suspend fun updateBook(id : Int){
+        BookDao.updateBook(id)
+    }
 
     @WorkerThread
     suspend fun insert(book: Book) {

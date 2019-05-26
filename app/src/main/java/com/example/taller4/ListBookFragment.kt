@@ -11,7 +11,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.EditText
 import android.widget.Toast
+import androidx.core.view.get
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -21,6 +23,7 @@ import com.example.taller4.Database.Entitys.Author
 import com.example.taller4.Database.Entitys.Book
 import com.example.taller4.Interface.IComunicaFragments
 import com.example.taller4.ViewModels.DataBaseViewModel
+import kotlinx.android.synthetic.main.recyclerview_item.view.*
 
 
 // TODO: Rename parameter arguments, choose names that match
@@ -74,33 +77,60 @@ class ListBookFragment : Fragment() {
         // Inflate the layout for this fragment
         val vista = inflater.inflate(R.layout.fragment_list_book, container, false)
 
+        //Instancias
+        val viewmodel = ViewModelProviders.of(this).get(DataBaseViewModel::class.java)
         val recyclerView = vista.findViewById<RecyclerView>(R.id.booksRV)
+        val verFavorito = vista.findViewById<Button>(R.id.btn_verFav)
+        val fab = vista.findViewById<Button>(R.id.btn_agregar)
+
+        //Adapter
+
         val adapter = context?.let { BookAdapter(it) }
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(context)
 
-
-
-
-        val viewmodel = ViewModelProviders.of(this).get(DataBaseViewModel::class.java)
+        //Insertar autores
 
         viewmodel.insertAuthor(Author("Mario","Espania"))
         viewmodel.insertAuthor(Author("Ricardo","El salvador"))
         viewmodel.insertAuthor(Author("Victor","Costa Rica"))
 
+
+        //Agregar libro a favorito o eliminarlo
+        viewmodel.allBooks.observe(this, Observer { books ->
+            books?.let { adapter?.setOnClickListenerBoton(object : View.OnClickListener{
+                override fun onClick(v: View) {
+                    val id : String = v.tag.toString()
+                    viewmodel.updateBook(id.toInt())
+                }
+
+
+            }) }
+        })
+        //Enviar bundle
+
         viewmodel.allBooks.observe(this, Observer { books->
             books?.let { adapter?.setOnClickListener(object : View.OnClickListener{
                 override fun onClick(v: View) {
-                    Toast.makeText(context, "Selecciona: "+ books.get(recyclerView.getChildAdapterPosition(v)).id_Book,Toast.LENGTH_SHORT).show()
-                    iCOmunica.enviarLibro(books.get(recyclerView.getChildAdapterPosition(v)).BookName,
-                        books.get(recyclerView.getChildAdapterPosition(v)).id_Book,
-                        books.get(recyclerView.getChildAdapterPosition(v)).Isbn_libro,
-                        books.get(recyclerView.getChildAdapterPosition(v)).Cover,
-                        books.get(recyclerView.getChildAdapterPosition(v)).Summary)
+
+                        //Muestra el Id del item seleccionado
+                        //Toast.makeText(context, "Selecciona: "+ books.get(recyclerView.getChildAdapterPosition(v)).id_Book,Toast.LENGTH_SHORT).show()
+
+                        //Agrega a favoritos al darle click al item
+
+
+                        //Envia los datos del libro por interfaz
+                         iCOmunica.enviarLibro(books.get(recyclerView.getChildAdapterPosition(v)).BookName,
+                             books.get(recyclerView.getChildAdapterPosition(v)).id_Book,
+                             books.get(recyclerView.getChildAdapterPosition(v)).Isbn_libro,
+                             books.get(recyclerView.getChildAdapterPosition(v)).Cover,
+                             books.get(recyclerView.getChildAdapterPosition(v)).Summary)
 
                 }})}
         })
 
+
+        //Muestra los autores que han sido insertados
         viewmodel.allAuthors.observe(this, Observer { authors ->
             Log.d("autors", "- - - - - - - - - - - - - -")
             for(repo in authors){
@@ -109,15 +139,29 @@ class ListBookFragment : Fragment() {
             }
         })
 
+
+        //LLenar recyclerview
         viewmodel.allBooks.observe(this, Observer { books->
-            books?.let { adapter?.setWords(books) }
+            books?.let {
+
+
+                adapter?.setWords(books)
+
+            }
         })
 
-        val fab = vista.findViewById<Button>(R.id.btn_agregar)
+        //Pasar al activity de favoritos
+        verFavorito.setOnClickListener{
+            val intent = Intent(context, ShowFavBooks::class.java)
+            startActivity(intent)
+        }
+
+      //Pasar al activity de agregar nuevo libro
         fab.setOnClickListener {
             val intent = Intent(context, NewBookActivity::class.java)
             startActivity(intent)
         }
+
         return vista
     }
 

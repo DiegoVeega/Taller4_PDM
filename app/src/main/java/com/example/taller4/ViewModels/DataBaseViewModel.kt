@@ -18,6 +18,7 @@ class DataBaseViewModel(application: Application) : AndroidViewModel(application
     val allAuthors : LiveData<List<Author>>
     val allBooks : LiveData<List<Book>>
     val allTags : LiveData<List<Tag>>
+    val allFavBook : LiveData<List<Book>>
 
 
 
@@ -31,10 +32,17 @@ class DataBaseViewModel(application: Application) : AndroidViewModel(application
         allAuthors = repository.allAuthors
         allBooks = repository.allBooks
         allTags = repository.allTags
+        allFavBook = repository.allFavBooks
 
 
     }
+    fun getOneBook(name: String) = viewModelScope.launch (Dispatchers.IO){
+        repository.getOneBook(name)
+    }
+    fun updateBook(id: Int) = viewModelScope.launch ( Dispatchers.IO ){
+        repository.updateBook(id)
 
+    }
 
     fun insertBook(book: Book) = viewModelScope.launch(Dispatchers.IO) {
         repository.insert(book)
