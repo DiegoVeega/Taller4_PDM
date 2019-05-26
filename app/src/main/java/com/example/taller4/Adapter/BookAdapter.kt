@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.FragmentActivity
@@ -16,6 +17,7 @@ import com.example.taller4.Database.DAO.BookDAO
 import com.example.taller4.Database.Entitys.Book
 import com.example.taller4.R
 import com.example.taller4.ViewModels.DataBaseViewModel
+import kotlinx.android.synthetic.main.fragment_detail_book.view.*
 
 class BookAdapter internal constructor(context: Context) : RecyclerView.Adapter<BookAdapter.BookViewHolder>() , View.OnClickListener {
 
@@ -27,7 +29,7 @@ class BookAdapter internal constructor(context: Context) : RecyclerView.Adapter<
     inner class BookViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val wordItemView: TextView = itemView.findViewById(R.id.textView)
         val wordItemViewR: TextView = itemView.findViewById(R.id.textViewResumen)
-        val wordItemViewFav : Button = itemView.findViewById(R.id.btn_favorito)
+        val wordItemViewFav : ImageView = itemView.findViewById(R.id.btn_favorito)
 
 
     }
@@ -49,10 +51,13 @@ class BookAdapter internal constructor(context: Context) : RecyclerView.Adapter<
         holder.wordItemViewR.text = current.Summary
         holder.wordItemViewFav.setOnClickListener(listenerBoton)
         if(current.Fav.equals(false)){
-            holder.wordItemViewFav.text = "Agregar"
+            //holder.wordItemViewFav.text = "Agregar"
+            holder.wordItemViewFav.setImageResource(R.drawable.star_no)
+
 
         }else{
-            holder.wordItemViewFav.text = "Eliminar"
+            //holder.wordItemViewFav.text = "Eliminar"
+            holder.wordItemViewFav.setImageResource(R.drawable.star_fav)
         }
        holder.wordItemViewFav.tag = current.id_Book
 
