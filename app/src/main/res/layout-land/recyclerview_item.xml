@@ -10,7 +10,27 @@
         android:orientation="horizontal">
 
 
-
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center" android:layout_centerVertical="true"
+                android:layout_alignParentStart="true" android:layout_centerHorizontal="true">
+            <!--
+            <TextView
+                android:text="Favoritos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20dp" />
+                -->
+            <ImageView
+                    android:id="@+id/btn_favorito"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:src="@drawable/star_no"
+                    android:layout_margin="25dp"/>
+        </LinearLayout>
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -19,14 +39,14 @@
 
 
             <ImageView
-                android:layout_width="@dimen/image_size"
-                android:layout_height="@dimen/image_size"
-                android:id="@+id/fotoImageView"
-                android:src="@drawable/imagebook"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginRight="@dimen/margin_image"
-                />
+                    android:layout_width="@dimen/image_size"
+                    android:layout_height="@dimen/image_size"
+                    android:id="@+id/fotoImageView"
+                    android:src="@drawable/imagebook"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginRight="@dimen/margin_image"
+                    android:layout_marginLeft="11dp" android:layout_marginTop="-13dp"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -48,24 +68,6 @@
                 />
 
         </RelativeLayout>
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center">
-            <!--
-            <TextView
-                android:text="Favoritos"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="20dp" />
-                -->
-            <Button
-                android:id="@+id/btn_favorito"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"/>
-        </LinearLayout>
 
     </LinearLayout>
 
