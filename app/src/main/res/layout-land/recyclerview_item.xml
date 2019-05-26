@@ -53,11 +53,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center">
+            <!--
             <TextView
                 android:text="Favoritos"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="20dp" />
+                -->
             <Button
                 android:id="@+id/btn_favorito"
                 android:layout_width="wrap_content"

@@ -50,6 +50,7 @@ class BookAdapter internal constructor(context: Context) : RecyclerView.Adapter<
         holder.wordItemViewFav.setOnClickListener(listenerBoton)
         if(current.Fav.equals(false)){
             holder.wordItemViewFav.text = "Agregar"
+
         }else{
             holder.wordItemViewFav.text = "Eliminar"
         }
